@@ -3,8 +3,8 @@
 include 'conect.php';
 
 session_start();
-if($_SESSION["logado"] == false){
-  header ('location:index.php');
+if ($_SESSION["logado"] == false) {
+  header('location:index.php');
 }
 
 $buscar_cadastro = "SELECT * FROM clientes";
@@ -102,7 +102,7 @@ $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
 
 
   <section>
-  <h2>LISTA DE PRATOS</h2>
+    <h2>LISTA DE PRATOS</h2>
     <div class="modal_addpratos" id="addpratos">
       <div id="formaddprato" class="formprato">
         <img id="imgteste" style="width:150px;height:150px;border:1px solid black;border-radius:20px;margin-top:20px;" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Baby.tux.sit-black-800x800.png" alt="">
@@ -116,7 +116,7 @@ $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
     </div>
     </div>
   </section>
-  <main> 
+  <main>
     <div>
       <a href="#" class="doble" onclick="addprato()()">
         <label>ADICIONAR</label><br>
