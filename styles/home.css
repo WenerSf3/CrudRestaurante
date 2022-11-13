@@ -42,11 +42,13 @@ header ul{
 }
 section{
     max-width: 900px;
-    margin: 20px auto;
+    margin: 0 auto;
     margin-bottom:10px;
     font-size: 10px;
     color: white;
     text-shadow: 1px 1px 1px black;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 section div{
     display: flex;

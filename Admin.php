@@ -43,7 +43,7 @@ $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
   </header>
 
   <section>
-    <h2>LISTA DE CADASTRADOS</h2>
+    <h2>LISTA DE CADASTRADOS</h2><br>
     <div class="container">
       <table class="table">
         <thead>
@@ -98,20 +98,20 @@ $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
 
   <section>
 
-      <div class="modal_addpratos" id="addpratos">
-        <div id="formaddprato" class="formprato">
-          <img id="imgteste" style="width:150px;height:150px;border:1px solid black;border-radius:20px;margin-top:20px;" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Baby.tux.sit-black-800x800.png" alt="">
-          <label>NOME DO PRATO</label>
-          <input type="text" id="nomeprato">
-          <label>Link da foto</label>
-          <input type="text" id="foto">
-          <button class="btn btn-dark" onclick="teste()">TESTAR</button><br>
-          <input class="btn btn-success" onclick="adicionarprato()" value="Adicionar"><br><br><br>
-        </div>
+    <div class="modal_addpratos" id="addpratos">
+      <div id="formaddprato" class="formprato">
+        <img id="imgteste" style="width:150px;height:150px;border:1px solid black;border-radius:20px;margin-top:20px;" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Baby.tux.sit-black-800x800.png" alt="">
+        <label>NOME DO PRATO</label>
+        <input type="text" id="nomeprato">
+        <label>Link da foto</label>
+        <input type="text" id="foto">
+        <button class="btn btn-dark" onclick="teste()">TESTAR</button><br>
+        <input class="btn btn-success" onclick="adicionarprato()" value="Adicionar"><br><br><br>
       </div>
     </div>
+    </div>
   </section>
-  <section style="display:flex;">
+  <main>
     <div>
       <a href="#" class="doble" onclick="addprato()()">
         <label><?php echo $nome ?></label><br>
@@ -132,18 +132,16 @@ $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
         <a href="#" class="doble" onclick="login()">
           <label><?php echo $nome ?></label><br>
           <img src="<?php echo $foto ?>">
-          
+
         </a>
         <form style="text-align: center;" action="excluirfoto.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <button type="submit" class="btn btn-light" style="height:45px;"><i class="fa-sharp fa-solid fa-trash"></i>
-          </form>
+          <input type="hidden" name="id" value="<?php echo $id; ?>">
+          <button type="submit" class="btn btn-light" style="height:45px;position:absolute;right: 37px;top: 52px;"><i class="fa-sharp fa-solid fa-trash"></i>
+        </form>
       </div>
-
-
     <?php }; ?>
 
-  </section>
+  </main>
 
 </body>
 

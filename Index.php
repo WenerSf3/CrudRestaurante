@@ -88,7 +88,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     </header>
     <br>
     <h2 style="text-align: center;color:white;text-shadow:2px 2px 0px black;"> PRATOS GERAIS </h2>
-    <main style="display:flex;">
+    <section>
         
         <?php
         while ($recebendo_pratos = mysqli_fetch_array($selecionar_pratos)) {
@@ -105,7 +105,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             
             <?php }; ?>
             
-    </main>
+    </section>
 
 
     <div class="modal_backdroplogin" id="modal_formlogin">
