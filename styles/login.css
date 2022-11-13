@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+
+    margin-top: 0 auto;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    animation-name: fotoss;
+    animation-duration: 41s;
+    animation-timing-function: infinite;
+    animation-iteration-count: infinite;
+
+}
+header{
+    font-family: Montserrat;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(40, 66, 144, 0.9);
+    padding: 10px;
+    border-bottom: 1px solid rgb(37, 17, 255);
+}
+header a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+header h2{
+    color: white;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+header h2 span{
+    color: green;
+}
+header ul{
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+    margin-top: 23px;
+}
+header ul a{
+    color: white;
+}
+header ul a:hover{
+    color: rgb(34, 111, 255); 
+}
+.fundoCad{
+    display:block;
+    text-align: center;
+    position:absolute;
+        left:50%;
+        transform: translateX(-50%) translateY(1%);
+    width:400px;
+    height:520px;
+    padding: 0;
+
+    color: white;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.194));
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    transition:1s;
+    
+}
+.fundoCad ul{
+    padding-left: 0px;
+}
+input{
+    width: 40vh;
+    height: 6vh;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0);
+    border: none;
+}
+.form input{
+    margin-bottom: 15px;
+    
+}
+.btn{
+    box-shadow: 1px 1px 2px 1px black;
+}
+
+#admin{
+    position: absolute;
+    left: 78%;
+    top: 1%;
+    opacity: 60%;
+}
+#admin:hover{
+    position: absolute;
+    left: 78%;
+    top: 1%;
+    opacity: 100%;
+}
+#footer{
+    width: 30px;
+    font-size: 22px;
+}
+#footer:hover{
+    font-size: 22px;
+    color: green;
+}
+#nada a{
+    color: white;
+}
+.esq{
+    list-style-type: none;
+    color: white;
+    text-decoration: none;
+}
+.esq:hover{
+    list-style-type: none;
+    color: white;
+    text-decoration: underline;
+}
+.cadastrar{
+    color: white;
+    list-style-type: none;
+    font-size: 3vh;
+    text-decoration: none;
+}
+.cadastrar:hover{
+    color: white;
+    text-decoration: underline;
+}
+@keyframes fotoss {
+    0%{
+        background-image: url(https://www.10wallpaper.com/wallpaper/1366x768/1511/Blurry_blue_background-Theme_HD_Wallpaper_1366x768.jpg);
+        background-size: cover;
+    }
+    17%{
+        background-image: url(https://www.10wallpaper.com/wallpaper/1366x768/1511/Blurry_blue_background-Theme_HD_Wallpaper_1366x768.jpg);
+        background-size: cover;
+    }
+    20%{
+        background-image: url(https://i0.wp.com/www.iparh.com/wp-content/uploads/2018/06/fundo-azul-curvas-escuro.jpg?ssl=1);
+        background-size: cover;
+    }
+    37%{
+        background-image: url(https://i0.wp.com/www.iparh.com/wp-content/uploads/2018/06/fundo-azul-curvas-escuro.jpg?ssl=1);
+        background-size: cover;
+    }
+    40%{
+        background-image: url(https://thumbs.dreamstime.com/b/fundo-azul-abstrato-da-cor-com-curvas-brancas-105632200.jpg);
+        background-size: cover;
+    }
+    57%{
+        background-image: url(https://thumbs.dreamstime.com/b/fundo-azul-abstrato-da-cor-com-curvas-brancas-105632200.jpg);
+        background-size: cover;
+    }
+    60%{
+        background-image: url(https://img.freepik.com/vetores-gratis/fundo-azul-abstrato-gradiente_79603-1549.jpg?w=2000);
+    }
+    77%{
+        background-image: url(https://img.freepik.com/vetores-gratis/fundo-azul-abstrato-gradiente_79603-1549.jpg?w=2000);
+        background-size: cover;
+    }
+    80%{
+        background-image: url(https://img.freepik.com/vetores-premium/fundo-azul-abstrato-geometrico_87788-90.jpg);
+        background-size: cover;
+    }
+    97%{
+        background-image: url(https://img.freepik.com/vetores-premium/fundo-azul-abstrato-geometrico_87788-90.jpg);
+        background-size: cover;
+    }
+    100%{
+        background-image: url(https://www.10wallpaper.com/wallpaper/1366x768/1511/Blurry_blue_background-Theme_HD_Wallpaper_1366x768.jpg);
+        background-size: cover;
+    }
+
+}
