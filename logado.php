@@ -1,51 +1,16 @@
 <?php
 include 'conect.php';
+session_start();
+if($_SESSION["usuario"] == false){
+  header ('location:index.php');
+}
 // isset = verificação de variavel
 // strlen = RETORNA TAMANO DE UMA STRING  
 // real_escape_string = pega um valor de caracteristicas especiais.  
 // fetch_assoc = resultado que o query consutar
+$buscar_pratos = "SELECT * FROM pratos";
+$selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
 
-if (isset($_POST['email']) || isset($_POST['senha'])) {
-    if (strlen($_POST['email']) == 0) {
-        echo <<<HTML
-            <script> 
-                alert ('preencha os email');
-            </script>
-            HTML;
-    } else if (strlen($_POST['senha']) == 0) {
-        echo <<<HTML
-            <script> 
-                alert ('preencha os senha');
-            </script>
-            HTML;
-    } else {
-
-        $email = $conectar->real_escape_string($_POST["email"]);
-        $senha = $conectar->real_escape_string($_POST["senha"]);
-
-        $querySelect = "SELECT * FROM `clientes` WHERE email = '$email' LIMIT 1 ";
-        $cn_query = $conectar->query($querySelect);
-        $result = $cn_query->fetch_assoc();
-
-        if (password_verify($senha, $result["hast"])) {
-            echo <<<HTML
-            <script> 
-                echo ('Seja Bem VIndo')
-            </script>
-            HTML;
-            if ($result["hast"] == 'admin' || $result['email'] == 'admin@gmail.com') {
-                echo 'Seja bemvindo admin';
-                header('location: admin.php');
-            }
-        } else {
-            echo <<<HTML
-            <script> 
-                alert ('Conta Nao Existente');
-            </script>
-            HTML;
-        }
-    }
-}
 
 ?>
 
@@ -67,79 +32,42 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
 <body>
 
     <header>
-        <!-- <img src="images/Meu restaurante.png" alt="Logo" id="logo"> -->
         <h2><a href="Index.php">BOMVIVER</a></h2>
         <ul>
             <a href="Index.php">
                 <li class="links">HOME</li>
             </a>
-            <a href="Contato.html">
-                <li class="links">PEDIDOS</li>
-            </a>
-            <a href="Contato.html">
-                <li class="links">CONTATO</li>
-            </a>
-            <a class="links" href="Index.php" id="sair" style="display: block;margin-right:20px;">SAIR</a>
+            <a href="logout.php">
+                <li class="links" id="sair" style="display: block;">SAIR</li>
+            </a> 
         </ul>
-
-
     </header>
-
+    <br>
+    <h2 style="text-align: center;color:white;text-shadow:2px 2px 0px black;"> PRATOS GERAIS </h2>
     <section>
-        <h2> CARDAPIO DO DIA </h3>
-        <div id="tabela" >
-            <a href="#" onclick="login()" class="doble">
-                <label for="prato">JAPONESES</label>
-                <img src="https://www.elevenrio.com.br/storage/2020/01/assorted-japanesse-food-2323398.jpg">
-            </a>
+        
+        <?php
+        while ($recebendo_pratos = mysqli_fetch_array($selecionar_pratos)) {
+                $id = $recebendo_pratos['id'];
+                $nome = $recebendo_pratos['nome'];
+                $foto = $recebendo_pratos['foto']; ?>
 
-            <a href="#" onclick="login()" class="doble">
-                <label>VEGETARIANOS</label>
-                <img src="images/prato 1.png">
-            </a>
-
-            <a href="#" onclick="login()" class="doble">
-                <label>TRADICIONAiS</label>
-                <img src="https://foodandroad.com/wp-content/uploads/2021/04/virado-paulista-brasil-1-1024x683.jpg" alt="Foto">
-
-            </a>
-
-            <a href="#" onclick="login()" class="doble">
-                <label>AMERICANOS</label>
-                <img src="https://inglestreinando.com/wp-content/uploads/2017/09/Pratos-dos-Estados-Unidos-panqueca-731x411.jpg" alt="Foto">
-            </a>
-        </div><br>
-        <div id="tabela">
-            <a href="#" onclick="login()" class="doble">
-                <label for="prato">BRASILEIRINHO</label>
-                <img src="https://imagens.usp.br/wp-content/uploads/pratodecomidafotomarcossantos003.jpg">
-            </a>
-
-            <a href="#" onclick="login()" class="doble">
-                <label>ABARÁ</label>
-                <img src="https://www.penaestrada.blog.br/wp-content/uploads/2021/02/comidas-tipicas-do-brasil-abara-768x495.jpg.webp">
-            </a>
-
-            <a href="#" onclick="login()" class="doble">
-                <label>Onigiri</label>
-                <img src="https://t2.rg.ltmcdn.com/pt/posts/1/7/0/bolinho_de_arroz_japones_10071_orig.jpg" alt="Foto">
-
-            </a>
-
-            <a href="#" onclick="login()" class="doble">
-                <label>Especial da MAE</label>
-                <img src="https://s2.glbimg.com/JAZaJrRJpVfXRP1BZwbAsUcuYLw=/0x0:1280x800/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2022/R/X/Lj3rwSQpm7BgzSEvJ1Mw/macarrao-simples-como-fazer.jpg" alt="Foto">
-            </a>
-        </div><br><br>
+            <div>
+                <a href="#" class="doble" onclick="login()">
+                    <label><?php echo $nome ?></label><br>
+                    <img src="<?php echo $foto ?>">
+                </a>
+            </div>
             
-        <div style="display:flex;justify-content:center;"><h1 style="text-shadow: 1px 1px 20px red, 1px 1px 1px black;">AGRADEÇO A SUA PARTICIPAÇÃO</h1></div>
+            <?php }; ?>
+            
     </section>
 
 
     <div class="modal_backdroplogin" id="modal_formlogin">
         <div class="modal_contentlogin">
             <div id="form2login">
-                <form id="formmm" class="formlogin" method="POST">
+                <form class="formlogin" method="POST" action="Index.php">
                     <h3>LOGIN</h3>
 
                     <label> E-mail <br>
@@ -152,8 +80,8 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                         <li>Esqueci a senha</li>
                     </a>
 
-                    <input onclick="validlogin()" type="submit" id="botao" class="btn btn-success" value="Entrar" /></input><br>
-                    <h4 id="msg2"></h4>
+                    <input onclick="validlogin()" type="button" id="botao" class="btn btn-success" value="Entrar" /></input><br>
+
                 </form>
 
                 <div>
@@ -167,6 +95,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                 </div>
                 <a class="cadastrar" id="signc" onclick="sign()" style="cursor: pointer;">Cadastrar-se</a>
                 </ul>
+                <h4 id="msg2"></h4>
             </div>
         </div>
     </div>
@@ -204,11 +133,8 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             </div>
         </div>
     </div>
-    <script>
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-    </script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/personalizado.js"></script>
 </body>
 
 </html>

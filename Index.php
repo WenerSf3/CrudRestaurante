@@ -1,5 +1,6 @@
 <?php
 include 'conect.php';
+session_start();
 // isset = verificação de variavel
 // strlen = RETORNA TAMANO DE UMA STRING  
 // real_escape_string = pega um valor de caracteristicas especiais.  
@@ -31,6 +32,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
 
         if (password_verify($senha, $result["hast"])) {
             header('location: logado.php');
+            $_SESSION["usuario"] = true;
             echo <<<HTML
             <script> 
                 document.getElementById('botao').type = 'submit';
@@ -39,6 +41,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
 
             if ($result["hast"] == 'admin' || $result['email'] == 'admin@gmail.com') {
                 echo 'Seja bemvindo admin';
+                $_SESSION["logado"] = true;
                 header('location: admin.php');
             }
         } else {
@@ -77,13 +80,39 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             <a href="Index.php">
                 <li class="links">HOME</li>
             </a>
-            <a href="#">
-                <li class="links" id="loginc" onclick="login()">LOGIN</li>
-            </a>
-            <a href="#">
-                <li class="links" id="signc" onclick="sign()" style="display: block;">CADASTRO</li>
+            <?php 
+                if($_SESSION["logado"] == true){
+                    echo <<<HTML
+                        <a href="Admin.php">
+                        <li class="links" id="loginc">ADMIN</li>
+                        </a> 
+                    HTML;
+                }
+                    
+                if($_SESSION["usuario"] == true){
+                    echo <<<HTML
+                    <a href="#">
+                    <li class="links" id="loginc" onclick="login()">PEDIDOS</li>
+                    </a>
+                    <a href="logout.php">
+                    <li class="links" id="sair" style="display: block;">SAIR</li>
+                    </a> 
+                HTML;
+                }else{
+                    
+                    echo <<<HTML
+                    <a href="#">
+                    <li class="links" id="loginc" onclick="login()">LOGIN</li>
+                    </a>
+            
+                    <a href="#">
+                    <li class="links" id="signc" onclick="sign()" style="display: block;">CADASTRO</li>
 
-            </a> 
+                    </a> 
+                HTML;
+                }
+            ?>
+            
         </ul>
     </header>
     <br>

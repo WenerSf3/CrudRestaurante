@@ -2,6 +2,11 @@
 
 include 'conect.php';
 
+session_start();
+if($_SESSION["logado"] == false){
+  header ('location:index.php');
+}
+
 $buscar_cadastro = "SELECT * FROM clientes";
 $buscar_pratos = "SELECT * FROM pratos";
 $selecionar_clientes = mysqli_query($conectar, $buscar_cadastro);
@@ -34,8 +39,8 @@ $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
       <a href="Index.php">
         <li class="links">HOME</li>
       </a>
-      <a href="Index.php">
-        <li class="links" onclick="logout()" id="sair" style="display: block;">SAIR</li>
+      <a href="logout.php">
+        <li class="links" id="sair" style="display: block;">SAIR</li>
       </a> 
     </ul>
 
