@@ -62,6 +62,8 @@ $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
             <?php }; ?>
             
     </section>
+    <div style="display:flex;justify-content:center;"><h1 style="text-shadow: 1px 1px 20px red, 1px 1px 1px black;">AGRADEÇO A SUA PARTICIPAÇÃO</h1></div>
+
 
 
     <div class="modal_backdroplogin" id="modal_formlogin">

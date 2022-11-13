@@ -80,50 +80,61 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             <a href="Index.php">
                 <li class="links">HOME</li>
             </a>
-            <?php 
-                if($_SESSION["logado"] == true){
-                    echo <<<HTML
+            <?php
+            if ($_SESSION["logado"] == true && $_SESSION["usuario"] == false) {
+                echo <<<HTML
                         <a href="Admin.php">
                         <li class="links" id="loginc">ADMIN</li>
+                        </a>
+                        <a href="logout.php">
+                        <li class="links" id="sair" style="display: block;">SAIR</li>
                         </a> 
                     HTML;
-                }
-                    
-                if($_SESSION["usuario"] == true){
-                    echo <<<HTML
-                    <a href="#">
-                    <li class="links" id="loginc" onclick="login()">PEDIDOS</li>
-                    </a>
-                    <a href="logout.php">
-                    <li class="links" id="sair" style="display: block;">SAIR</li>
-                    </a> 
-                HTML;
-                }else{
-                    
-                    echo <<<HTML
-                    <a href="#">
-                    <li class="links" id="loginc" onclick="login()">LOGIN</li>
-                    </a>
-            
-                    <a href="#">
-                    <li class="links" id="signc" onclick="sign()" style="display: block;">CADASTRO</li>
+            }
 
-                    </a> 
-                HTML;
-                }
+            if ($_SESSION["logado"] == false && $_SESSION["usuario"] == true) {
+                echo <<<HTML
+                        <a href="logout.php">
+                        <li class="links" id="sair" style="display: block;">SAIR</li>
+                        </a> 
+                    HTML;
+            }
+            if ($_SESSION["logado"] == true && $_SESSION["usuario"] == true) {
+                echo <<<HTML
+                        <a href="Admin.php">
+                        <li class="links" id="loginc">ADMIN</li>
+                        </a>
+                        <a href="logout.php">
+                        <li class="links" id="sair" style="display: block;">SAIR</li>
+                        </a> 
+                    HTML;
+            }
+            if ($_SESSION["logado"] == false && $_SESSION["usuario"] == false) {
+                echo <<<HTML
+                        <a href="#">
+                            <li class="links" id="loginc" onclick="login()">LOGIN</li>
+                        </a>
+                        <a href="#">
+                            <li class="links" id="signc" onclick="sign()" style="display: block;">CADASTRO</li>
+
+                        </a> 
+                    HTML;
+            }
+
+
             ?>
-            
+
         </ul>
     </header>
     <br>
     <h2 style="text-align: center;color:white;text-shadow:2px 2px 0px black;"> PRATOS GERAIS </h2>
     <section>
-        
+
         <?php
         while ($recebendo_pratos = mysqli_fetch_array($selecionar_pratos)) {
-                $id = $recebendo_pratos['id'];
-                $nome = $recebendo_pratos['nome'];
-                $foto = $recebendo_pratos['foto']; ?>
+            $id = $recebendo_pratos['id'];
+            $nome = $recebendo_pratos['nome'];
+            $foto = $recebendo_pratos['foto']; ?>
 
             <div>
                 <a href="#" class="doble" onclick="login()">
@@ -131,9 +142,9 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                     <img src="<?php echo $foto ?>">
                 </a>
             </div>
-            
-            <?php }; ?>
-            
+
+        <?php }; ?>
+
     </section>
 
 

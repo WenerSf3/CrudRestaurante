@@ -102,7 +102,7 @@ $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
 
 
   <section>
-
+  <h2>LISTA DE PRATOS</h2>
     <div class="modal_addpratos" id="addpratos">
       <div id="formaddprato" class="formprato">
         <img id="imgteste" style="width:150px;height:150px;border:1px solid black;border-radius:20px;margin-top:20px;" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Baby.tux.sit-black-800x800.png" alt="">
@@ -116,10 +116,10 @@ $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
     </div>
     </div>
   </section>
-  <main>
+  <main> 
     <div>
       <a href="#" class="doble" onclick="addprato()()">
-        <label><?php echo $nome ?></label><br>
+        <label>ADICIONAR</label><br>
         <img src="https://png.pngtree.com/png-vector/20190217/ourlarge/pngtree-vector-add-icon-png-image_555576.jpg">
         <form style="text-align: center;" action="excluirfoto.php" method="POST">
           <input type="hidden" name="id" value="<?php echo $id; ?>">

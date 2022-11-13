@@ -143,6 +143,7 @@ table{
     justify-content: center;
     align-items: center;
     cursor: auto;
+    font-size: 20px;
     z-index: 1000;
 }
 .formprato{
@@ -153,13 +154,17 @@ table{
     border-radius: 15px;
     display: grid;
     justify-content: center;
+    
 }
 
-#formprato{
-    display: grid;
+.formprato img{
+    transform: translateX(35%);
+    
 }
 
 #formaddprato input{
-    width: 150px;
+    width: 250px;
     height: 30px;
+    border: 1px solid transparent;
+    border-radius: 10px;
 }
