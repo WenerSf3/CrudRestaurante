@@ -1,12 +1,17 @@
 <?php
 include 'conect.php';
-session_start();
+
+session_start(); 
+
+error_reporting(0);
+
 // isset = verificação de variavel
 // strlen = RETORNA TAMANO DE UMA STRING  
 // real_escape_string = pega um valor de caracteristicas especiais.  
 // fetch_assoc = resultado que o query consutar
 $buscar_pratos = "SELECT * FROM pratos";
 $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
+
 
 if (isset($_POST['email']) || isset($_POST['senha'])) {
     if (strlen($_POST['email']) == 0) {
@@ -24,7 +29,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     } else {
         $email = $conectar->real_escape_string($_POST["email"]);
         $senha = $conectar->real_escape_string($_POST["senha"]);
-
+        
         $querySelect = "SELECT * FROM `clientes` WHERE email = '$email' LIMIT 1 ";
         $cn_query = $conectar->query($querySelect);
         $result = $cn_query->fetch_assoc();
@@ -137,13 +142,13 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
 
             <div>
                 <?php 
-                if($_SESSION['logado'] == false){
+                if($_SESSION['logado'] == false || $_SESSION['usuario'] == false){
                     echo <<<HTML
                         <a href="#" class="doble" onclick="login()">
                     HTML;
                 }else{
                     echo <<<HTML
-                        <a href="#" class="doble">
+                        <a href="#" class="doble" onclick="showpratos()">
                     HTML;
                 }
                 ?>
