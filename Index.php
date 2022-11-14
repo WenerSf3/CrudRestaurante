@@ -22,7 +22,6 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             </script>
             HTML;
     } else {
-
         $email = $conectar->real_escape_string($_POST["email"]);
         $senha = $conectar->real_escape_string($_POST["senha"]);
 
@@ -31,7 +30,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
         $result = $cn_query->fetch_assoc();
 
         if (password_verify($senha, $result["hast"])) {
-            header('location: logado.php');
+            header('location: index.php');
             $_SESSION["usuario"] = true;
             echo <<<HTML
             <script> 
@@ -42,7 +41,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             if ($result["hast"] == 'admin' || $result['email'] == 'admin@gmail.com') {
                 echo 'Seja bemvindo admin';
                 $_SESSION["logado"] = true;
-                header('location: admin.php');
+                header('location: index.php');
             }
         } else {
             echo <<<HTML
@@ -130,14 +129,24 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     <h2 style="text-align: center;color:white;text-shadow:2px 2px 0px black;"> PRATOS GERAIS </h2>
     <section>
 
-        <?php
+    <?php
         while ($recebendo_pratos = mysqli_fetch_array($selecionar_pratos)) {
             $id = $recebendo_pratos['id'];
             $nome = $recebendo_pratos['nome'];
             $foto = $recebendo_pratos['foto']; ?>
 
             <div>
-                <a href="#" class="doble" onclick="login()">
+                <?php 
+                if($_SESSION['logado'] == false){
+                    echo <<<HTML
+                        <a href="#" class="doble" onclick="login()">
+                    HTML;
+                }else{
+                    echo <<<HTML
+                        <a href="#" class="doble">
+                    HTML;
+                }
+                ?>
                     <label><?php echo $nome ?></label><br>
                     <img src="<?php echo $foto ?>">
                 </a>
