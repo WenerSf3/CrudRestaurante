@@ -159,11 +159,11 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                 <div class="modal_vpratos" id="vpratos">
                     <div id="formavpratos" class="formavpratos">
                         <div id="inff">
-                            <img id="showimg" src="<?php echo $foto ?>" alt="">
-                            <h2><?php echo $nome ?></h2><br>
-                            <div style="display: flex;">
+                            <img id="showimg" src="<?php echo $foto ?>">
+                            <h2 style="position:relative;left:-40px;"><?php echo $nome ?></h2><br>
+                            <div style="position:relative;left: -9vw;">
                                 <h4>Ingredientes:</h4>
-                                <p style="position:relative;left:-100px;"><br>
+                                <p style="position: relative;left: -100px;"><br>
                                     <?php echo $descricao ?>
                                 </p>
                             </div>

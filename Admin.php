@@ -146,6 +146,7 @@ $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
           <button type="submit" class="btn btn-light" style="height:45px;position:absolute;right: 37px;top: 52px;"><i class="fa-sharp fa-solid fa-trash"></i>
         </form>
       </div>
+      
     <?php }; ?>
 
   </main>
