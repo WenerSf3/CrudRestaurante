@@ -110,7 +110,9 @@ $selecionar_pratos = mysqli_query($conectar, $buscar_pratos);
         <input type="text" id="nomeprato">
         <label>Link da foto</label>
         <input type="text" id="foto">
-        <button class="btn btn-dark" onclick="teste()">TESTAR</button><br>
+        <label>Descrição</label>
+        <textarea type="text" id="descricao"></textarea>
+        <button class="btn btn-dark" onclick="teste()">TESTAR IMAGEM</button>
         <input class="btn btn-success" onclick="adicionarprato()" value="Adicionar"><br><br><br>
       </div>
     </div>

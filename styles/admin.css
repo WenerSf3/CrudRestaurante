@@ -149,17 +149,16 @@ table{
 .formprato{
     background-color: rgba(17, 17, 17, 0.464);
     width: 400px;
-    height: 400px;
+    height: 550px;
     border: 1px solid #111;
     border-radius: 15px;
     display: grid;
     justify-content: center;
-    
+    gap:2px;
 }
 
 .formprato img{
     transform: translateX(35%);
-    
 }
 
 #formaddprato input{
@@ -168,3 +167,14 @@ table{
     border: 1px solid transparent;
     border-radius: 10px;
 }
+#formaddprato #descricao{
+    width: 250px;
+    height: 120px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    text-align: left;
+    align-items: start;
+}
+

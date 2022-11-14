@@ -315,4 +315,60 @@ section div{
     justify-content: center;
     display: none;
 }
+#vpratos{
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(17, 17, 17, 0.5);
+    display: none;
+}
+#vpratos.mostre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: auto;
+    font-size: 20px;
+    z-index: 1000;
+}
+.formavpratos{
+    background-color: rgba(17, 17, 17, 0.464);
+    width: 500px;
+    height: 500px;
+    border: 1px solid #111;
+    border-radius: 15px;
+    position: relative;
+    margin-top: 30px;
+    padding: 20px;
+    
+}
 
+.formavpratos img{
+    transform: translateX(15%);
+    margin-top: 35px;
+    border:1px solid white;
+    border-radius: 10px;
+}
+
+#formaddprato input{
+    width: 250px;
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+#showimg{
+    width:200px;
+    height:200px;
+    margin-top: 40px;
+}
+#inff div{
+    position: relative;
+    top: 50px;
+    left: -100px;
+    border-radius: 10px;
+    color: black;
+    background-color: white;
+    width: 220px;
+    height: 300px;
+}

@@ -235,4 +235,17 @@ function validsign() {
 
 }
 
+function showpratos() {
+  let modal_formprato = document.getElementById('vpratos');
+
+  if (modal_formprato) {
+    modal_formprato.classList.add('mostre');
+    modal_formprato.addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        modal_formprato.classList.remove('mostre');
+      }
+    })
+  }
+}
+
 

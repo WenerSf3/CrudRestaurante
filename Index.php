@@ -1,7 +1,7 @@
 <?php
 include 'conect.php';
 
-session_start(); 
+session_start();
 
 error_reporting(0);
 
@@ -29,7 +29,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     } else {
         $email = $conectar->real_escape_string($_POST["email"]);
         $senha = $conectar->real_escape_string($_POST["senha"]);
-        
+
         $querySelect = "SELECT * FROM `clientes` WHERE email = '$email' LIMIT 1 ";
         $cn_query = $conectar->query($querySelect);
         $result = $cn_query->fetch_assoc();
@@ -134,29 +134,46 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     <h2 style="text-align: center;color:white;text-shadow:2px 2px 0px black;"> PRATOS GERAIS </h2>
     <section>
 
-    <?php
+        <?php
         while ($recebendo_pratos = mysqli_fetch_array($selecionar_pratos)) {
             $id = $recebendo_pratos['id'];
             $nome = $recebendo_pratos['nome'];
-            $foto = $recebendo_pratos['foto']; ?>
+            $foto = $recebendo_pratos['foto'];
+            $descricao = $recebendo_pratos['descricao']; ?>
 
             <div>
-                <?php 
-                if($_SESSION['logado'] == false || $_SESSION['usuario'] == false){
+                <?php
+                if ($_SESSION['logado'] == false || $_SESSION['usuario'] == false) {
                     echo <<<HTML
                         <a href="#" class="doble" onclick="login()">
                     HTML;
-                }else{
+                } else {
                     echo <<<HTML
                         <a href="#" class="doble" onclick="showpratos()">
                     HTML;
                 }
                 ?>
-                    <label><?php echo $nome ?></label><br>
-                    <img src="<?php echo $foto ?>">
+                <label><?php echo $nome ?></label><br>
+                <img src="<?php echo $foto ?>">
                 </a>
-            </div>
+                <div class="modal_vpratos" id="vpratos">
+                    <div id="formavpratos" class="formavpratos">
+                        <div id="inff">
+                            <img id="showimg" src="<?php echo $foto ?>" alt="">
+                            <h2><?php echo $nome ?></h2><br>
+                            <div style="display: flex;">
+                                <h4>Ingredientes:</h4>
+                                <p style="position:relative;left:-100px;"><br>
+                                    <?php echo $descricao ?>
+                                </p>
+                            </div>
+                        </div>
 
+                    </div>
+
+                </div>
+            </div>
+            </div>
         <?php }; ?>
 
     </section>

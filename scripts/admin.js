@@ -16,13 +16,15 @@ function adicionarprato() {
 
   let foto = document.getElementById('foto').value;
   let nome = document.getElementById('nomeprato').value;
+  let descricao = document.getElementById('descricao').value;
   console.log(foto)
   document.getElementById('imgteste').src = foto;
   window.location.href = 'admin.php';
 
   var objeto = {
     nome: nome,
-    foto: foto
+    foto: foto,
+    descricao: descricao
   }
 
   fetch("http://localhost/bomviver/fotos.php", {
