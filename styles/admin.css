@@ -177,4 +177,8 @@ table{
     text-align: left;
     align-items: start;
 }
-
+#inff{
+    display: flex;
+    position: relative;
+    left:-20px;
+}

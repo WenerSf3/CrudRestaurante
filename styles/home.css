@@ -357,18 +357,3 @@ section div{
     border: 1px solid transparent;
     border-radius: 10px;
 }
-#showimg{
-    width:200px;
-    height:200px;
-    margin-top: 40px;
-}
-#inff div{
-    position: relative;
-    top: 50px;
-    left: -100px;
-    border-radius: 10px;
-    color: black;
-    background-color: white;
-    width: 220px;
-    height: 300px;
-}

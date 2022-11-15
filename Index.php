@@ -3,7 +3,7 @@ include 'conect.php';
 
 session_start();
 
-error_reporting(0);
+error_reporting($_SESSION["logado"]);
 
 // isset = verificação de variavel
 // strlen = RETORNA TAMANO DE UMA STRING  
@@ -135,6 +135,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     <section>
 
         <?php
+
         while ($recebendo_pratos = mysqli_fetch_array($selecionar_pratos)) {
             $id = $recebendo_pratos['id'];
             $nome = $recebendo_pratos['nome'];
@@ -144,6 +145,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             <div>
                 <?php
                 if ($_SESSION['logado'] == false || $_SESSION['usuario'] == false) {
+                        
                     echo <<<HTML
                         <a href="#" class="doble" onclick="login()">
                     HTML;
@@ -152,30 +154,14 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                         <a href="#" class="doble" onclick="showpratos()">
                     HTML;
                 }
-                ?>
-                <label><?php echo $nome ?></label><br>
-                <img src="<?php echo $foto ?>">
+                ?>  
+                    <label><?php echo $nome ?></label><br>
+                    <img src="<?php echo $foto ?>">
                 </a>
-                <div class="modal_vpratos" id="vpratos">
-                    <div id="formavpratos" class="formavpratos">
-                        <div id="inff">
-                            <img id="showimg" src="<?php echo $foto ?>">
-                            <h2 style="position:relative;left:-40px;"><?php echo $nome ?></h2><br>
-                            <div style="position:relative;left: -9vw;">
-                                <h4>Ingredientes:</h4>
-                                <p style="position: relative;left: -100px;"><br>
-                                    <?php echo $descricao ?>
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
             </div>
-            </div>
-        <?php }; ?>
 
+            <?php }; ?>
+                
     </section>
 
 
