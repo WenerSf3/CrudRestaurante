@@ -3,7 +3,7 @@ include 'conect.php';
 
 session_start();
 
-error_reporting($_SESSION["logado"]);
+error_reporting(0);
 
 // isset = verificação de variavel
 // strlen = RETORNA TAMANO DE UMA STRING  
@@ -151,16 +151,17 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                     HTML;
                 } else {
                     echo <<<HTML
-                        <a href="#" class="doble" onclick="showpratos()">
+                        <a href="#" class="doble" onclick="showpratos()"> 
                     HTML;
                 }
                 ?>  
                     <label><?php echo $nome ?></label><br>
-                    <img src="<?php echo $foto ?>">
-                </a>
-            </div>
-
+                    <img src="<?php echo $foto ?>" id="<?php echo $id ?>">
+                    </a>
+                </div>
+                
             <?php }; ?>
+            
                 
     </section>
 
@@ -235,7 +236,6 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
         </div>
     </div>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts/personalizado.js"></script>
 </body>
 
 </html>
